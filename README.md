@@ -12,10 +12,9 @@ A Python-based network packet sniffer built with **Scapy**. Captures live traffi
 4. [Program Flow](#program-flow)
 5. [Flowchart](#flowchart)
 6. [Protocol Parsing Logic](#protocol-parsing-logic)
-7. [Function Reference](#function-reference)
-8. [Output Format](#output-format)
-9. [Log File](#log-file)
-10. [Common Errors](#common-errors)
+7. [Output Format](#output-format)
+8. [Log File](#log-file)
+9. [Common Errors](#common-errors)
 
 ---
 
