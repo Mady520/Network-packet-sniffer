@@ -39,9 +39,6 @@ A Python-based network packet sniffer built with **Scapy**. Captures live traffi
 
 ### Step 2 — Navigate to the script folder
 
-```
-cd "C:\Users\mudas\OneDrive\Desktop\New folder (5)"
-```
 
 ### Step 3 — Find your interface name (Windows)
 
@@ -55,16 +52,16 @@ Common names: `Wi-Fi`, `Ethernet`
 
 ```bash
 # Capture 50 packets on Wi-Fi
-python basic_packet_sniffer.py -i "Wi-Fi" -c 50
+python packet_sniffer.py -i "Wi-Fi" -c 50
 
 # Capture only HTTP traffic indefinitely
-python basic_packet_sniffer.py -i "Wi-Fi" -f "tcp port 80"
+python packet_sniffer.py -i "Wi-Fi" -f "tcp port 80"
 
 # Capture DNS queries only
-python basic_packet_sniffer.py -i "Wi-Fi" -f "udp port 53"
+python packet_sniffer.py -i "Wi-Fi" -f "udp port 53"
 
 # Capture everything, unlimited
-python basic_packet_sniffer.py -i "Wi-Fi"
+python packet_sniffer.py -i "Wi-Fi"
 ```
 
 ---
@@ -209,32 +206,6 @@ Packet
       ├── ICMPv6 Echo → src → dst
       └── Other  → src → dst
 ```
-
----
-
-## Function Reference
-
-### `is_admin() → bool`
-Checks if the process has administrator/root privileges.
-- Windows: uses `ctypes.windll.shell32.IsUserAnAdmin()`
-- Linux/macOS: checks `os.geteuid() == 0`
-
-### `log(message: str)`
-Prepends a timestamp and prints to console + appends to `packet_log.txt`.
-
-### `decode_payload(raw_bytes: bytes) → str`
-Attempts to decode the first 60 bytes of a TCP payload as UTF-8. Falls back to `repr()` if decoding fails. Strips newlines for clean single-line output.
-
-### `packet_handler(packet)`
-Called by scapy for every captured packet. Identifies the protocol stack, builds a human-readable info string, and calls `log()`. Increments the global `packet_count`.
-
-### `print_summary()`
-Prints total captured packet count and the path to the log file after sniffing ends.
-
-### `start_sniffing(interface, count, bpf_filter)`
-Entry point for the sniffing session. Validates privileges, converts empty filter to `None`, then calls `scapy.sniff()`.
-
----
 
 ## Output Format
 
